@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TextField from '@mui/material/TextField';
 
 export const Input = () => {
   const [inputValue, setInputValue] = useState('');
@@ -10,7 +11,7 @@ export const Input = () => {
   }
 
   const converter = (number) => {
-    if (isNaN(number)) return setRoman("Sólo se aceptan números entre el 1 y el 4999 :(");
+    if (!Number.isInteger(Number(number))) return setRoman("Sólo se aceptan números entre el 1 y el 4999 :(");
     if (number > 4999) return setRoman("El número máximo es 4999 !");
     let output = '', relative;
     const roman = {
@@ -39,10 +40,10 @@ export const Input = () => {
 
   return (
     <>
-    <input
-      type="text"
-      placeholder="Introduce un número"
-      value = {inputValue}
+    <TextField
+      id="outlined-required"
+      label="Escriba un número"
+      value = { inputValue }
       onChange = { handleInputChange }
     />
     <h1> { roman } </h1>
