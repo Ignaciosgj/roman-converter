@@ -1,0 +1,7 @@
+#outlined-required {
+    background-color: #FFF;
+    border-radius: 4px;
+}
+
+#outlined-required:focus-visible {
+}

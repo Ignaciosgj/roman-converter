@@ -3,6 +3,8 @@ import TextField from '@mui/material/TextField';
 import { romanConverterFunction } from "./romanConverterFunction";
 import { isNotAnInteger } from "../../helpers/isNotAnInteger";
 
+import "./input.css";
+
 const MAX_ROMAN_NUMBER = 4999;
 export const Input = () => {
   const [inputValue, setInputValue] = useState('');
@@ -28,7 +30,7 @@ export const Input = () => {
       value = { inputValue }
       onChange = { handleInputChange }
     />
-    <h1> { roman } </h1>
+    <div> { roman } </div>
     </>
   )
 }
