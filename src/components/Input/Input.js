@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
+import { romanConverterFunction } from "./romanConverterFunction";
+import { isNotAnInteger } from "../../helpers/isNotAnInteger";
 
+const MAX_ROMAN_NUMBER = 4999;
 export const Input = () => {
   const [inputValue, setInputValue] = useState('');
   const [roman, setRoman] = useState('');
@@ -11,30 +14,9 @@ export const Input = () => {
   }
 
   const converter = (number) => {
-    if (!Number.isInteger(Number(number))) return setRoman("Sólo se aceptan números entre el 1 y el 4999 :(");
-    if (number > 4999) return setRoman("El número máximo es 4999 !");
-    let output = '', relative;
-    const roman = {
-      M: 1000,
-      CM: 900,
-      D: 500,
-      CD: 400,
-      C: 100,
-      XC: 90,
-      L: 50,
-      XL: 40,
-      X: 10,
-      IX: 9,
-      V: 5,
-      IV: 4,
-      I: 1
-    }
-  
-    for (let i of Object.keys(roman)) {
-      relative = Math.floor(number / roman[i]);
-      number -= relative * roman[i];
-      output += i.repeat(relative);
-    }
+    if (isNotAnInteger(number)) return setRoman("Sólo se aceptan números entre el 1 y el 4999 :(");
+    if (isBiggerThan(number, MAX_ROMAN_NUMBER)) return setRoman("El número máximo es 4999 !");
+    let output = romanConverterFunction(number);
     setRoman(output);
   }
 
@@ -50,3 +32,10 @@ export const Input = () => {
     </>
   )
 }
+
+
+
+function isBiggerThan(number, maxNumber) {
+  return number > maxNumber;
+}
+
