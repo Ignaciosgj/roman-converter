@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TextField from '@mui/material/TextField';
 import { romanConverterFunction } from "./romanConverterFunction";
 import { isNotAnInteger } from "../../helpers/isNotAnInteger";
 
@@ -24,13 +23,16 @@ export const Input = () => {
 
   return (
     <>
-    <TextField
-      id="outlined-required"
-      label="Escriba un número"
+    <input
+      placeholder="Escriba un número"
       value = { inputValue }
       onChange = { handleInputChange }
     />
-    <div> { roman } </div>
+      {
+        inputValue === "" ? 
+        <div role="default" className="output"> Esperando un número ☺</div> :
+        <div role="result" className="output"> {roman} </div>
+      }
     </>
   )
 }
