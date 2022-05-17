@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { romanConverterFunction } from "./romanConverterFunction";
-import { isNotAnInteger } from "../../helpers/isNotAnInteger";
 
 import "./input.css";
 
-const MAX_ROMAN_NUMBER = 4999;
 export const Input = () => {
   const [inputValue, setInputValue] = useState('');
   const [roman, setRoman] = useState('');
@@ -15,10 +13,12 @@ export const Input = () => {
   }
 
   const converter = (number) => {
-    if (isNotAnInteger(number)) return setRoman("Sólo se aceptan números entre el 1 y el 4999 :(");
-    if (isBiggerThan(number, MAX_ROMAN_NUMBER)) return setRoman("El número máximo es 4999 !");
-    let output = romanConverterFunction(number);
-    setRoman(output);
+    try {
+      let output = romanConverterFunction(number);
+      setRoman(output);
+    } catch (error) {
+      setRoman(error.message);
+    }
   }
 
   return (
@@ -39,7 +39,4 @@ export const Input = () => {
 
 
 
-function isBiggerThan(number, maxNumber) {
-  return number > maxNumber;
-}
 
