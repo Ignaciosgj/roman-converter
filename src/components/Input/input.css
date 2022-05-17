@@ -1,7 +1,11 @@
-#outlined-required {
-    background-color: #FFF;
-    border-radius: 4px;
+input {
+    height: 3rem;
+    width: 10rem;
+    font-size: 1rem;
+    text-align: center;
+    margin: 20px 0px
 }
 
-#outlined-required:focus-visible {
+.output {
+    font-size: 1.5rem;
 }
