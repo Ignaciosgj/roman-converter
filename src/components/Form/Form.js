@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { romanConverterFunction } from "./romanConverterFunction";
 
+import "./Form.css";
+
 export const Form = () => {
   const [inputValue, setInputValue] = useState('');
   const [roman, setRoman] = useState('Esperando un número');
@@ -37,7 +39,7 @@ export const Form = () => {
         </label>
         <button>Convertir</button>
       </form>
-      <h1 role="result"> {roman} </h1>
+      <h1 className="result" role="result"> {roman} </h1>
     </>
   )
 }
